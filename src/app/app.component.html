@@ -1,0 +1,47 @@
+<div class="container">
+  <form  [formGroup]="userForm" (ngSubmit)='onAddUser()'>
+    <div class="form-group">
+      <label for="name">Enter user name</label>
+     <input 
+      type="text"
+      id="name"
+      formControlName='userName'
+      class="form-control">
+      </div>
+    <div class="form-group">
+        <label for="email">Enter user email</label>
+       <input 
+        type="email"
+        id="email"
+        formControlName='email'
+        class="form-control">
+       </div>
+       <div class="form-group">
+        <label for="status">User status</label>
+        <select 
+        id="status"
+        formControlName='status'
+        class="form-control">
+          <option value="unemployed">Unenployed</option>
+          <option value="employed">Enployed</option>
+          <option value="student">Student</option>
+        </select>
+       </div>
+    <button class="btn btn-primary" type="submit">Add new user</button>
+    
+    </form>
+    <hr>
+    <div class="row">
+     <div class="col-xs-">
+      <button class="btn btn-primary" (click)="getAListOfUsers()">Check added users</button>
+     </div>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let user of userArray">
+          <h4>User: {{user.userName}}</h4>
+          <h5>Status: {{user.status}}</h5>
+          <p> Email: {{user.email}}</p>
+          <p>User ID:  {{user.id}}</p>
+      </li>
+    </ul>
+</div>
